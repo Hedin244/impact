@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AUTH_TOKEN } from './constants';
+import {TextField, Button} from '@material-ui/core';
 
 class Login extends Component {
 
@@ -9,6 +10,27 @@ class Login extends Component {
         password: '',
     };
 
+    login = () => {
+        const { email, password } = this.state;
+
+        fetch('http://localhost:8000/graphql', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                query: `{ login(email: "${ email }", password: "${ password }") { token } }`
+            }),
+        })
+            .then(res => res.json())
+            .then(res => {
+                const { data, errors } = res;
+                if (errors) {
+                    console.log(errors[0]);
+                } else {
+                    console.log(data);
+                }
+            });
+    };
+
     render() {
         const { email, password } = this.state;
 
@@ -16,32 +38,23 @@ class Login extends Component {
             <div>
                 <h4 className="mv3">Login</h4>
                 <div className="flex flex-column">
-                    <input
-                        value={email}
-                        onChange={e => this.setState({ email: e.target.value })}
+                    <TextField
+                        value={ email }
+                        onChange={ e => this.setState({ email: e.target.value }) }
                         type="text"
-                        placeholder="Your email address"
+                        label="Email"
                     />
-                    <input
-                        value={password}
-                        onChange={e => this.setState({ password: e.target.value })}
+                    <TextField
+                        value={ password }
+                        onChange={ e => this.setState({ password: e.target.value }) }
                         type="password"
-                        placeholder="Choose a safe password"
+                        label="Password"
                     />
-                </div>
-                <div className="flex mt3">
+                    <Button onClick={ this.login }>login</Button>
                 </div>
             </div>
         )
     }
-
-    _confirm = async () => {
-        // ... you'll implement this 🔜
-    };
-
-    _saveUserData = token => {
-        localStorage.setItem(AUTH_TOKEN, token)
-    };
 }
 
 export default Login
