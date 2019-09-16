@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Header from './components/Hedaer';
+import CharacterPage from './components/CharacterPage';
 import AuthContext from './context/auth-context';
 import './App.css';
 
@@ -29,7 +30,15 @@ class App extends PureComponent {
         const { token, userId } = this.state;
         
         return (
-            <div className="App">
+            <div className="App" style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: 'flex',
+                flexDirection: 'column',
+            }}>
                 <AuthContext.Provider
                     value={{
                         token: this.state.token,
@@ -39,21 +48,27 @@ class App extends PureComponent {
                     }}
                 >
                     <Header />
-                    <div className="center w85">
-                        <div className="ph3 pv1 background-gray">
-                            <BrowserRouter>
+                    <div style={{
+                        flexGrow: '1',
+                        overflow: 'auto',
+                    }}>
+                        <BrowserRouter>
                             <Switch>
-                                { token && <Route exact path="/">
+                                { token &&
+                                <Route exact path="/">
                                     Home logged in: { userId }
                                 </Route>
                                 }
-                                { token && <Route exact path="/">
-                                    Home
+                                <Route exact path="/roland">
+                                    <CharacterPage />
+                                </Route>
+                                { !token &&
+                                <Route exact path="/">
+                                    Not logged in
                                 </Route>
                                 }
                             </Switch>
-                            </BrowserRouter>
-                        </div>
+                        </BrowserRouter>
                     </div>
                 </AuthContext.Provider>
             </div>
