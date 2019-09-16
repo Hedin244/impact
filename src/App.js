@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 import Header from './components/Hedaer';
 import CharacterPage from './components/CharacterPage';
 import AuthContext from './context/auth-context';
@@ -52,7 +52,7 @@ class App extends PureComponent {
                         flexGrow: '1',
                         overflow: 'auto',
                     }}>
-                        <BrowserRouter>
+                        <HashRouter basename='/'>
                             <Switch>
                                 { token &&
                                 <Route exact path="/">
@@ -68,7 +68,7 @@ class App extends PureComponent {
                                 </Route>
                                 }
                             </Switch>
-                        </BrowserRouter>
+                        </HashRouter>
                     </div>
                 </AuthContext.Provider>
             </div>
