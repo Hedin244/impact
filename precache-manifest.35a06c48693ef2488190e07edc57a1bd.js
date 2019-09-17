@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "26a59718a3d8b89f2e5979a20748fcbe",
+    "revision": "def878e16a27882c043b35781d88c0af",
     "url": "/impact/index.html"
   },
   {
-    "revision": "0a8774867e6b043c0cfa",
+    "revision": "68a178dd36752f96d46c",
     "url": "/impact/static/css/main.2cce8147.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/impact/static/js/2.6e6da66d.chunk.js"
   },
   {
-    "revision": "0a8774867e6b043c0cfa",
-    "url": "/impact/static/js/main.3eca8529.chunk.js"
+    "revision": "68a178dd36752f96d46c",
+    "url": "/impact/static/js/main.9aeef1e7.chunk.js"
   },
   {
     "revision": "37835aff76efba07942d",
