@@ -10,10 +10,10 @@ export default class EventsPanel extends PureComponent {
         return (
             <Card elevation={ 2 } className={ classes.card }>
                 <CardContent>
-                    <Typography variant="h6">
+                    <Typography align="left" variant="h6">
                         { title }
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography align="justify" variant="body2">
                         { children }
                     </Typography>
                 </CardContent>
@@ -38,6 +38,15 @@ export default class EventsPanel extends PureComponent {
                 <br /><br />
                 <em>
                     Aftermath: “Blood Riders” name stick. It helped them by rising prices for their work and causing fear in their enemies harts, but also make them targets of many vangences of their victims. In one of them several years latter Iliya died.
+                </em>
+            </Chapter>,
+
+            <Chapter key="the attack"  title="End of a good life">
+                They came at night, seven of them. Roland felt something, but he was in no position to fight them off. One handed, off shape, no weapons. It wasn't even hard to restrain him and his family. They tortured Annie, so it didnt took much to break Roland to give the attackers all old blueprints of Rolands inventions, many of them not made at all. At the end Roland was left bleeding besides his dying wife and child in a burning house.<br />
+
+                <br /><br />
+                <em>
+                    Aftermath:
                 </em>
             </Chapter>,
         ]);

@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
-import { Card, List, ListItem, Typography } from '@material-ui/core';
+import { Card, Typography } from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
 
 function Item({ children }) {
     return (
-        <ListItem>
+        <Typography align="left" variant="body2">
             &#9679; &nbsp; &nbsp; { children }
-        </ListItem>
+        </Typography>
     );
 }
 
@@ -18,12 +18,10 @@ export default class HistoryPanel extends PureComponent {
         return (
             <Card elevation={ 2 } className={ classes.card }>
                 <CardContent>
-                    <Typography variant="h6">
+                    <Typography align="left" variant="h6">
                         { title }
                     </Typography>
-                    <List>
-                        { children }
-                    </List>
+                    { children }
                 </CardContent>
             </Card>
         );
@@ -58,7 +56,8 @@ export default class HistoryPanel extends PureComponent {
             </Chapter>,
 
             <Chapter key="3"  title="Old dog’s coming back">
-                <Item>Roland digs out his gear, and kills all attackers.</Item>
+                <Item>Roland digs out his gear, go after the attackers and kills them all.</Item>
+                <Item>Raiders attacked because they wonted Roland's inventions and blueprints. Which they got and send somewhere before they died.</Item>
                 <Item>Roland comes to Waterdeep to find Valetta.</Item>
             </Chapter>,
         ]);

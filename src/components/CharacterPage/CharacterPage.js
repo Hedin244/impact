@@ -5,6 +5,8 @@ import HistoryPanel from './HistoryPanel';
 import EventsPanel from './EventsPanel';
 import InventionsPanel from './InventionsPanel';
 import CharacterPanel from './CharacterPanel';
+import EquipmentPanel from './EquipmentPanel';
+import NotesPanel from './NotesPanel';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -30,11 +32,14 @@ function a11yProps(index) {
 
 export default class CharacterPage extends PureComponent {
 
+    ContentRef = React.createRef();
+
     state = {
         tab: 0,
     };
 
     setTab = (event, tab) => {
+        this.ContentRef.current.scrollTop = 0;
         this.setState({ tab });
     };
 
@@ -56,9 +61,11 @@ export default class CharacterPage extends PureComponent {
                         <Tab label="Events" { ...a11yProps(2) } />
                         <Tab label="Characters" { ...a11yProps(3) } />
                         <Tab label="Inventions" { ...a11yProps(4) } />
+                        <Tab label="Equipment" { ...a11yProps(5) } />
+                        <Tab label="Notes to GM" { ...a11yProps(6) } />
                     </Tabs>
                 </Card>
-                <div className={ classes.tabContent }>
+                <div className={ classes.tabContent } ref={ this.ContentRef }>
                     <TabPanel value={ tab } index={ 0 }>
                         <BasePanel classes={ classes } />
                     </TabPanel>
@@ -73,6 +80,12 @@ export default class CharacterPage extends PureComponent {
                     </TabPanel>
                     <TabPanel value={ tab } index={ 4 }>
                         <InventionsPanel classes={ classes } />
+                    </TabPanel>
+                    <TabPanel value={ tab } index={ 5 }>
+                        <EquipmentPanel classes={ classes } />
+                    </TabPanel>
+                    <TabPanel value={ tab } index={ 6 }>
+                        <NotesPanel classes={ classes } />
                     </TabPanel>
                 </div>
             </div>
